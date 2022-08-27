@@ -1,17 +1,20 @@
 import React, {useState, Fragment} from 'react';
 import './App.css';
 
-const List = ({ items }) => {
+const List = (props) => {
+  const items = props.items
   const [isActive, setIsActive] = useState(false);
   
-  const handleChange = () => {
+  const handleChange = (e) => {
+    e.preventDefault();
+    console.log(e.target);
     setIsActive(!isActive)
   }
   return (
   <Fragment>
       <ul className="List">
-        {items.map((item, index) => (
-          <li key={index} onClick={ handleChange} className={` ${(isActive === true) ? 'List__item tk': `List__item List__item--${item.color}`}`}>
+        {items.map(item => (
+          <li key={item.name} onClick={ handleChange} className={` List__item ${(isActive === true) ? 'tk': `List__item--${item.color}`}`}>
             {item.name}
           </li>
         ))}
