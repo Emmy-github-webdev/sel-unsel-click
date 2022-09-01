@@ -6,10 +6,11 @@ const List = (props) => {
   const [isActive, setIsActive] = useState(false);
   
   const handleChange = (e) => {
-    e.preventDefault();
-    console.log(e.target);
+    const index = (e.target.index);
+    console.log(index)
     setIsActive(!isActive)
   }
+
   return (
   <Fragment>
       <ul className="List">
